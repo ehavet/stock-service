@@ -7,12 +7,17 @@ const stocks = [
     {id: '6', units: 354 }]
 
 export class StockRepository {
-    async get() {
+    async get(stockId = undefined) {
+        if (stockId) return stocks.find(stock => stock.id === stockId)
         return stocks
     }
 
     async update(id, units) {
-        const index = stocks.findIndex((stock => stock.id === id))
-        stocks[index].units = units
+        const index = this.getStockIndex(id)
+        if (index >= 0) stocks[index].units = units
+    }
+
+    getStockIndex(stockId) {
+        return stocks.findIndex((stock => stock.id === stockId))
     }
 }

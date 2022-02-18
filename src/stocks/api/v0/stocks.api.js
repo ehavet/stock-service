@@ -19,7 +19,7 @@ export default function (router, container) {
             try {
                 res.status(200).send(await container.GetStocks())
             } catch (error) {
-                res.status(500).send({error: 'erreur 500'})
+                res.boom.internal(error)
             }
         })
 
@@ -38,7 +38,12 @@ export default function (router, container) {
                 await container.UpdateStock(req.params.id, parseInt(req.body.units))
                 res.status(201).send()
             } catch (error) {
-                res.boom.internal(error)
+                switch (true) {
+                case error instanceof StockNotFoundError:
+                    return res.boom.notFound(error.message)
+                default:
+                    res.boom.internal(error)
+                }
             }
         })
 
