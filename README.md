@@ -1,4 +1,4 @@
-# node-api-express-bootstrap
+# stock-service
 
 ## Prérequis
 
