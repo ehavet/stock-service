@@ -1,15 +1,6 @@
 export default function (container) {
     return async ({message}) => {
         const {event, payload} = parseMessage(message)
-
-        switch (event) {
-        case 'created':
-            return await container.UpdateStockAndSendEvent(
-                payload.orderId,
-                payload.itemId,
-                payload.quantity
-            )
-        }
     }
 }
 

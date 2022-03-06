@@ -1,19 +1,14 @@
 import express from 'express'
-import kafka from './kafka.js'
+import messageBroker from './kafka.js'
 const app = express()
 import boom from 'express-boom'
 import config from './config.js'
-import {messagesHandler, routes} from './interfaces.js'
+import {messagesConsumer, routes} from './interfaces.js'
 import logger from 'express-pino-logger'
 import cors from 'cors'
 
 const consume = async () => {
-    const consumer = kafka.consumer({
-        groupId: 'order-service-consumer'
-    })
-    await consumer.connect()
-    await consumer.subscribe({topic: 'order'})
-    await consumer.run({eachMessage: messagesHandler})
+    await messageBroker.consumer.run({eachMessage: messagesConsumer})
 }
 
 function listen () {
