@@ -36,7 +36,7 @@ export default function (router, container) {
 
             try {
                 await container.UpdateStock(req.params.id, parseInt(req.body.units))
-                res.status(201).send()
+                res.status(204).send()
             } catch (error) {
                 switch (true) {
                 case error instanceof StockNotFoundError:

@@ -25,3 +25,34 @@ yarn install --frozen-lockfile
 ```bash
 yarn start
 ```
+
+## API
+
+#### PUT /v0/stocks/{stockId}
+
+request body
+
+```
+{
+    "units": 10000
+}
+```
+
+204
+
+#### GET /v0/stocks
+
+200
+
+```
+[
+    {
+        "id": "1",
+        "units": 10000
+    },
+    {
+        "id": "2",
+        "units": 644
+    }
+]
+```
