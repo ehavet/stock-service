@@ -3,8 +3,8 @@ export default function (container) {
         const {event, payload} = parseMessage(message)
 
         switch (event) {
-        case 'created':
-            return await container.UpdateStockAndSendEvent(
+        case 'eventName':
+            return await container.RemoveFromStockAndSendEvent(
                 payload.orderId,
                 payload.clientId,
                 payload.itemId,

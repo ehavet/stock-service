@@ -9,6 +9,6 @@ export default Envie({
     APP_PORT: Joi
         .number()
         .min(0)
-        .default(8080)
+        .default(8082)
         .description('Port on which the HTTP server will listen'),
 })

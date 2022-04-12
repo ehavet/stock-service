@@ -28,13 +28,25 @@ yarn start
 
 ## API
 
-#### PUT /v0/stocks/{stockId}
+#### POST /v0/stocks/{stockId}/removal
 
 request body
 
 ```
 {
-    "units": 10000
+    "units": 10
+}
+```
+
+204
+
+#### POST /v0/stocks/{stockId}/addition
+
+request body
+
+```
+{
+    "units": 12
 }
 ```
 

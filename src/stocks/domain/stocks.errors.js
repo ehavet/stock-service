@@ -5,3 +5,11 @@ export class StockNotFoundError extends Error {
         this.name = 'StockNotFoundError'
     }
 }
+
+export class InsufficientStockError extends Error {
+    constructor (stockId) {
+        const message = `Insufficient ${stockId} stock`
+        super(message)
+        this.name = 'InsufficientStockError'
+    }
+}
